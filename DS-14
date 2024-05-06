@@ -1,0 +1,67 @@
+14-Topic: To illustrate various Binary Tree functions 
+
+#include <iostream>
+#include <stack>
+#include <string>
+using namespace std;
+// Structure for a binary tree node
+struct TreeNode {
+char data;
+TreeNode* left;
+TreeNode* right;
+TreeNode(char data) : data(data), left(nullptr), right(nullptr) {}
+};
+// Function to check if a character is an operator
+bool isOperator(char c) {
+return c == '+' || c == '-' || c == '*' || c == '/';
+}
+// Function to construct an expression tree from infix expression
+TreeNode* constructExpressionTree(const string& expression) {
+stack<TreeNode*> st;
+for (char c : expression) {
+if (isalnum(c)) {
+TreeNode* newNode = new TreeNode(c);
+st.push(newNode);
+} else if (isOperator(c)) {
+TreeNode* newNode = new TreeNode(c);
+newNode->right = st.top();
+st.pop();
+newNode->left = st.top();
+st.pop();
+st.push(newNode);
+}
+}
+return st.top();
+}
+// Function to perform postorder traversal (non-recursive)
+void postorderTraversal(TreeNode* root) {
+if (!root) return;
+stack<TreeNode*> st;
+TreeNode* prev = nullptr;
+do {
+while (root) {
+st.push(root);
+root = root->left;
+}
+while (!root && !st.empty()) {
+root = st.top();
+if (root->right == prev || !root->right) {
+cout << root->data << " ";
+st.pop();
+prev = root;
+root = nullptr;
+} else {
+root = root->right;
+}
+}
+} while (!st.empty());
+}
+int main() {
+string infixExpression = "a-b*c-d/e+f";
+cout << "Infix Expression: " << infixExpression << endl;
+// Construct expression tree
+TreeNode* root = constructExpressionTree(infixExpression);
+cout << "Postorder Traversal: ";
+postorderTraversal(root);
+return 0;
+}
