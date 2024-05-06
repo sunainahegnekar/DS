@@ -1,0 +1,73 @@
+12-Topic: Java Program demonstrating Interfaces and Packages
+
+1. Vehicle.java(interface)
+package vehicles;
+public interface Vehicle {
+void start();
+void stop();
+void accelerate();
+void brake();
+}
+2. Car.java(Class implementing Vehicle interface):
+package vehicles;
+public class Car implements Vehicle {
+@Override
+public void start() {
+System.out.println("Car started");
+}
+@Override
+public void stop() {
+System.out.println("Car stopped");
+}
+@Override
+public void accelerate() {
+System.out.println("Car accelerating");
+}
+@Override
+public void brake() {
+System.out.println("Car braking");
+}
+}
+3. Bike.java (Class implementing Vehicle interface):
+package vehicles;
+public class Bike implements Vehicle {
+@Override
+public void start() {
+System.out.println("Bike started");
+}
+@Override
+public void stop() {
+System.out.println("Bike stopped");
+}
+@Override
+public void accelerate() {
+System.out.println("Bike accelerating");
+}
+@Override
+public void brake() {
+System.out.println("Bike braking");
+}
+}
+Next, let's create a package named demo which will contain the main class to
+demonstrate the usage of the vehicles package.
+4. VehicleDemo.java:
+package demo;
+import vehicles.Car;
+import vehicles.Bike;
+import vehicles.Vehicle;
+public class VehicleDemo {
+public static void main(String[] args) {
+Vehicle car = new Car();
+Vehicle bike = new Bike();
+System.out.println("Car:");
+car.start();
+car.accelerate();
+car.brake();
+car.stop();
+System.out.println("\nBike:");
+bike.start();
+bike.accelerate();
+bike.brake();
+bike.stop();
+}
+}
