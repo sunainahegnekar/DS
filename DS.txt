@@ -1,0 +1,5 @@
+DS
+Basic Concepts, Storage representation, Adjacency matrix, adjacency list, adjacency multi list, inverse
+adjacency list. Traversals-depth first and breadth first, Minimum spanning Tree, Greedy algorithms
+for computing minimum spanning tree- Prims and Kruskal Algorithms, Dikjtra's Single source shortest
+path, All pairs shortest paths- Flyod-Warshall Algorithm Topological ordering.
